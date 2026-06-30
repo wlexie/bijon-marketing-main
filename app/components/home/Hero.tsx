@@ -3,8 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
-  //   Play,
-  //   Pause,
   ChevronLeft,
   ChevronRight,
   Users,
@@ -47,40 +45,48 @@ const stats = [
   { icon: <Zap size={16} />, value: "50+", label: "Campaigns" },
 ];
 
+const SLIDE_DURATION = 8000;
+const TEXT_FADE_DURATION = 700;
+
 export default function Hero() {
   const [active, setActive] = useState(0);
-  const [playing, setPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
+  const [displayed, setDisplayed] = useState(0); // what text is currently shown
+  const [textVisible, setTextVisible] = useState(true);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const SLIDE_DURATION = 8000;
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Auto-advance
   useEffect(() => {
-    if (!playing) {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      return;
-    }
-    setProgress(0);
-    const step = 100 / (SLIDE_DURATION / 50);
     intervalRef.current = setInterval(() => {
-      setProgress((p) => {
-        if (p + step >= 100) {
-          setActive((a) => (a + 1) % slides.length);
-          return 0;
-        }
-        return p + step;
-      });
-    }, 50);
+      setActive((a) => (a + 1) % slides.length);
+    }, SLIDE_DURATION);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [playing, active]);
+  }, []);
+
+  // Whenever "active" changes, fade text out, swap content, fade text in
+  useEffect(() => {
+    setTextVisible(false); // start fade out
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
+      setDisplayed(active); // swap text content while invisible
+      setTextVisible(true); // fade back in
+    }, TEXT_FADE_DURATION);
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [active]);
 
   const goTo = (index: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
     setActive(index);
-    setProgress(0);
+    intervalRef.current = setInterval(() => {
+      setActive((a) => (a + 1) % slides.length);
+    }, SLIDE_DURATION);
   };
 
-  const slide = slides[active];
+  const slide = slides[displayed];
 
   return (
     <section
@@ -100,7 +106,7 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             opacity: i === active ? 1 : 0,
-            transition: "opacity 2.5s ease-in-out",
+            transition: "opacity 2.2s ease-in-out",
           }}
         >
           <img
@@ -110,7 +116,7 @@ export default function Hero() {
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              transform: i === active ? "scale(1.05)" : "scale(1)",
+              transform: i === active ? "scale(1.06)" : "scale(1)",
               transition: "transform 10s ease-out",
             }}
           />
@@ -135,7 +141,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Content */}
+      {/* Content — single fading wrapper, no remount flash */}
       <div
         style={{
           position: "absolute",
@@ -148,99 +154,95 @@ export default function Hero() {
         }}
       >
         <div style={{ maxWidth: 1280, margin: "0 auto", width: "100%" }}>
-          {/* Tag pill */}
           <div
-            key={`tag-${active}`}
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              backgroundColor: "rgba(255,255,255,0.1)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.2)",
-              padding: "8px 18px",
-              borderRadius: 100,
-              marginBottom: 20,
-              animation: "fadeIn 1.4s ease both",
+              opacity: textVisible ? 1 : 0,
+              transition: `opacity ${TEXT_FADE_DURATION}ms ease`,
             }}
           >
-            <span style={{ position: "relative", display: "inline-flex" }}>
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  backgroundColor: "var(--accent)",
-                  display: "block",
-                }}
-              />
-              <span
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  borderRadius: "50%",
-                  backgroundColor: "var(--accent)",
-                  animation: "ping 1.5s cubic-bezier(0,0,0.2,1) infinite",
-                  opacity: 0.4,
-                }}
-              />
-            </span>
-            <span
+            {/* Tag pill */}
+            <div
               style={{
-                color: "#fff",
-                fontSize: 12,
-                fontWeight: 600,
-                letterSpacing: "0.5px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                backgroundColor: "rgba(255,255,255,0.1)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                padding: "8px 18px",
+                borderRadius: 100,
+                marginBottom: 20,
               }}
             >
-              {slide.tag}
-            </span>
+              <span style={{ position: "relative", display: "inline-flex" }}>
+                <span
+                  style={{
+                    width: 8,
+                    height: 8,
+                    borderRadius: "50%",
+                    backgroundColor: "var(--accent)",
+                    display: "block",
+                  }}
+                />
+                <span
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    borderRadius: "50%",
+                    backgroundColor: "var(--accent)",
+                    animation: "ping 1.5s cubic-bezier(0,0,0.2,1) infinite",
+                    opacity: 0.4,
+                  }}
+                />
+              </span>
+              <span
+                style={{
+                  color: "#fff",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  letterSpacing: "0.5px",
+                }}
+              >
+                {slide.tag}
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1
+              style={{
+                fontSize: "clamp(36px, 6vw, 64px)",
+                fontWeight: 700,
+                lineHeight: 1.1,
+                letterSpacing: "-1.5px",
+                color: "#fff",
+                maxWidth: 760,
+                marginBottom: 20,
+              }}
+            >
+              {slide.headline}
+            </h1>
+
+            {/* Description */}
+            <p
+              style={{
+                fontSize: "clamp(15px, 1.8vw, 18px)",
+                color: "rgba(255,255,255,0.75)",
+                lineHeight: 1.75,
+                maxWidth: 560,
+                marginBottom: 36,
+              }}
+            >
+              {slide.description}
+            </p>
           </div>
 
-          {/* Headline */}
-          <h1
-            key={`h-${active}`}
-            style={{
-              fontSize: "clamp(36px, 6vw, 64px)",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: "-1.5px",
-              color: "#fff",
-              maxWidth: 760,
-              marginBottom: 20,
-              animation: "fadeIn 1.4s 0.5s ease both",
-              opacity: 0,
-            }}
-          >
-            {slide.headline}
-          </h1>
-
-          {/* Description */}
-          <p
-            key={`d-${active}`}
-            style={{
-              fontSize: "clamp(15px, 1.8vw, 18px)",
-              color: "rgba(255,255,255,0.75)",
-              lineHeight: 1.75,
-              maxWidth: 560,
-              marginBottom: 36,
-              animation: "fadeIn 1.4s 0.8s ease both",
-              opacity: 0,
-            }}
-          >
-            {slide.description}
-          </p>
-
-          {/* CTAs */}
+          {/* CTAs — stay visible, don't fade with text */}
           <div
-            key={`btns-${active}`}
             style={{
               display: "flex",
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 48,
-              animation: "fadeIn 1.4s 1.1s ease both",
-              opacity: 0,
             }}
           >
             <Link
@@ -281,25 +283,6 @@ export default function Hero() {
             >
               Our Services
             </Link>
-            {/* <button
-              onClick={() => setPlaying(!playing)}
-              className="btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                backgroundColor: "transparent",
-                border: "1px solid rgba(255,255,255,0.25)",
-                color: "#fff",
-                fontSize: 15,
-                fontWeight: 600,
-                padding: "15px 18px",
-                borderRadius: 10,
-                cursor: "pointer",
-              }}
-            >
-              {playing ? <Pause size={16} /> : <Play size={16} />}
-            </button> */}
           </div>
 
           {/* Stats row */}
@@ -435,10 +418,6 @@ export default function Hero() {
       </div>
 
       <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to   { opacity: 1; }
-        }
         @keyframes ping {
           75%, 100% { transform: scale(2.2); opacity: 0; }
         }
