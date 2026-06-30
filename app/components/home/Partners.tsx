@@ -223,7 +223,7 @@ export default function Partners() {
                   whiteSpace: "nowrap",
                   flexShrink: 0,
                   minWidth: 180,
-                  transition: "all 0.8s ease",
+                  transition: "all 0.3s ease",
                   cursor: "default",
                 }}
                 className="partner-card"
@@ -250,7 +250,7 @@ export default function Partners() {
             style={{
               gap: 16,
               animationDirection: "reverse",
-              animationDuration: "35s",
+              animationDuration: "50s",
             }}
           >
             {[...doubled].reverse().map((name, i) => (
