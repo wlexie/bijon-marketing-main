@@ -3,8 +3,8 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
-  Play,
-  Pause,
+  //   Play,
+  //   Pause,
   ChevronLeft,
   ChevronRight,
   Users,
@@ -100,7 +100,7 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             opacity: i === active ? 1 : 0,
-            transition: "opacity 1s ease-in-out",
+            transition: "opacity 3s ease-in-out",
           }}
         >
           <img
@@ -111,7 +111,7 @@ export default function Hero() {
               height: "100%",
               objectFit: "cover",
               transform: i === active ? "scale(1.05)" : "scale(1)",
-              transition: "transform 6s ease-out",
+              transition: "transform 7s ease-out",
             }}
           />
         </div>
@@ -281,7 +281,7 @@ export default function Hero() {
             >
               Our Services
             </Link>
-            <button
+            {/* <button
               onClick={() => setPlaying(!playing)}
               className="btn"
               style={{
@@ -299,7 +299,7 @@ export default function Hero() {
               }}
             >
               {playing ? <Pause size={16} /> : <Play size={16} />}
-            </button>
+            </button> */}
           </div>
 
           {/* Stats row */}
