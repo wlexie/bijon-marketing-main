@@ -24,6 +24,24 @@ const services = [
   },
   {
     number: "02",
+    title: "Branding & Identity",
+    tagline: "Build a brand that stands out",
+    description:
+      "Developing powerful brand identities that resonate with your target audience and stand the test of time. We craft visual systems, messaging frameworks, and brand guidelines that make your business unforgettable.",
+    features: [
+      "Logo Design & Visual Identity",
+      "Brand Strategy & Positioning",
+      "Brand Guidelines & Style Guides",
+      "Messaging & Tone of Voice",
+      "Brand Refresh & Rebranding",
+    ],
+    image:
+      "https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=900",
+    color: "var(--accent)",
+    bg: "rgba(137,65,0,0.06)",
+  },
+  {
+    number: "03",
     title: "Experiential Marketing",
     tagline: "Create moments that matter",
     description:
@@ -37,24 +55,6 @@ const services = [
     ],
     image:
       "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=900",
-    color: "var(--accent)",
-    bg: "rgba(137,65,0,0.06)",
-  },
-  {
-    number: "03",
-    title: "Media Planning & Buying",
-    tagline: "Put your message where it matters most",
-    description:
-      "Strategic placement of advertising across optimal channels to reach target audiences efficiently while maximizing budget effectiveness. We negotiate the best placements and ensure every shilling delivers maximum impact.",
-    features: [
-      "TV & Radio Advertising",
-      "Out-of-Home (OOH) Advertising",
-      "Digital Media Buying",
-      "Programmatic Advertising",
-      "Media Performance Analysis",
-    ],
-    image:
-      "https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg?auto=compress&cs=tinysrgb&w=900",
     color: "var(--primary)",
     bg: "rgba(0,74,198,0.06)",
   },
@@ -78,19 +78,19 @@ const services = [
   },
   {
     number: "05",
-    title: "Branding & Identity",
-    tagline: "Build a brand that stands out",
+    title: "Media Planning & Buying",
+    tagline: "Put your message where it matters most",
     description:
-      "Developing powerful brand identities that resonate with your target audience and stand the test of time. We craft visual systems, messaging frameworks, and brand guidelines that make your business unforgettable.",
+      "Strategic placement of advertising across optimal channels to reach target audiences efficiently while maximizing budget effectiveness. We negotiate the best placements and ensure every shilling delivers maximum impact.",
     features: [
-      "Logo Design & Visual Identity",
-      "Brand Strategy & Positioning",
-      "Brand Guidelines & Style Guides",
-      "Messaging & Tone of Voice",
-      "Brand Refresh & Rebranding",
+      "TV & Radio Advertising",
+      "Out-of-Home (OOH) Advertising",
+      "Digital Media Buying",
+      "Programmatic Advertising",
+      "Media Performance Analysis",
     ],
     image:
-      "https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=900",
+      "https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg?auto=compress&cs=tinysrgb&w=900",
     color: "var(--primary)",
     bg: "rgba(0,74,198,0.06)",
   },
