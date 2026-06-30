@@ -52,7 +52,7 @@ export default function Hero() {
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const SLIDE_DURATION = 7000;
+  const SLIDE_DURATION = 8000;
 
   useEffect(() => {
     if (!playing) {
@@ -100,7 +100,7 @@ export default function Hero() {
             position: "absolute",
             inset: 0,
             opacity: i === active ? 1 : 0,
-            transition: "opacity 3s ease-in-out",
+            transition: "opacity 2.5s ease-in-out",
           }}
         >
           <img
@@ -111,7 +111,7 @@ export default function Hero() {
               height: "100%",
               objectFit: "cover",
               transform: i === active ? "scale(1.05)" : "scale(1)",
-              transition: "transform 7s ease-out",
+              transition: "transform 10s ease-out",
             }}
           />
         </div>
@@ -161,7 +161,7 @@ export default function Hero() {
               padding: "8px 18px",
               borderRadius: 100,
               marginBottom: 20,
-              animation: "fadeUp 0.6s ease both",
+              animation: "fadeUp 1.4s ease both",
             }}
           >
             <span style={{ position: "relative", display: "inline-flex" }}>
@@ -208,7 +208,7 @@ export default function Hero() {
               color: "#fff",
               maxWidth: 760,
               marginBottom: 20,
-              animation: "fadeUp 0.6s 0.1s ease both",
+              animation: "fadeUp 1.4s 0.5s ease both",
               opacity: 0,
             }}
           >
@@ -224,7 +224,7 @@ export default function Hero() {
               lineHeight: 1.75,
               maxWidth: 560,
               marginBottom: 36,
-              animation: "fadeUp 0.6s 0.2s ease both",
+              animation: "fadeUp 1.4s 0.8s ease both",
               opacity: 0,
             }}
           >
@@ -239,7 +239,7 @@ export default function Hero() {
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 48,
-              animation: "fadeUp 0.6s 0.3s ease both",
+              animation: "fadeUp 1.4s 1.1s ease both",
               opacity: 0,
             }}
           >
