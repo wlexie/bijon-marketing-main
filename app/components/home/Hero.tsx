@@ -52,7 +52,7 @@ export default function Hero() {
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const SLIDE_DURATION = 6000;
+  const SLIDE_DURATION = 7000;
 
   useEffect(() => {
     if (!playing) {
@@ -355,44 +355,6 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Progress bars — Netflix style */}
-          <div style={{ display: "flex", gap: 8, maxWidth: 640 }}>
-            {slides.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i)}
-                style={{
-                  flex: 1,
-                  height: 3,
-                  borderRadius: 2,
-                  border: "none",
-                  cursor: "pointer",
-                  backgroundColor: "rgba(255,255,255,0.25)",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
-              >
-                <div
-                  style={{
-                    position: "absolute",
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    width:
-                      i === active
-                        ? `${progress}%`
-                        : i < active
-                          ? "100%"
-                          : "0%",
-                    backgroundColor: "var(--accent)",
-                    transition: i === active ? "none" : "width 0.3s ease",
-                    borderRadius: 2,
-                  }}
-                />
-              </button>
             ))}
           </div>
         </div>
