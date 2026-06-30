@@ -161,7 +161,7 @@ export default function Hero() {
               padding: "8px 18px",
               borderRadius: 100,
               marginBottom: 20,
-              animation: "fadeUp 1.4s ease both",
+              animation: "fadeIn 1.4s ease both",
             }}
           >
             <span style={{ position: "relative", display: "inline-flex" }}>
@@ -208,7 +208,7 @@ export default function Hero() {
               color: "#fff",
               maxWidth: 760,
               marginBottom: 20,
-              animation: "fadeUp 1.4s 0.5s ease both",
+              animation: "fadeIn 1.4s 0.5s ease both",
               opacity: 0,
             }}
           >
@@ -224,7 +224,7 @@ export default function Hero() {
               lineHeight: 1.75,
               maxWidth: 560,
               marginBottom: 36,
-              animation: "fadeUp 1.4s 0.8s ease both",
+              animation: "fadeIn 1.4s 0.8s ease both",
               opacity: 0,
             }}
           >
@@ -239,7 +239,7 @@ export default function Hero() {
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 48,
-              animation: "fadeUp 1.4s 1.1s ease both",
+              animation: "fadeIn 1.4s 1.1s ease both",
               opacity: 0,
             }}
           >
@@ -435,9 +435,9 @@ export default function Hero() {
       </div>
 
       <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(16px); }
-          to   { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
         }
         @keyframes ping {
           75%, 100% { transform: scale(2.2); opacity: 0; }
