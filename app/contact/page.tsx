@@ -5,7 +5,8 @@ import {
   FaLinkedinIn,
   FaInstagram,
   FaXTwitter,
-  FaFacebookF,
+  FaFacebook,
+  FaTiktok,
 } from "react-icons/fa6";
 
 export default function ContactPage() {
@@ -100,27 +101,33 @@ export default function ContactPage() {
   const socials = [
     {
       icon: <FaLinkedinIn size={16} />,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/company/bijon-marketing-agency/",
       label: "LinkedIn",
       color: "#0077b5",
     },
     {
       icon: <FaInstagram size={16} />,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/bijon_marketing/",
       label: "Instagram",
       color: "#e4405f",
     },
     {
       icon: <FaXTwitter size={16} />,
-      href: "https://x.com",
+      href: "https://x.com/Bijonmarketing?s=20",
       label: "Twitter",
       color: "#000000",
     },
     {
-      icon: <FaFacebookF size={16} />,
-      href: "https://facebook.com",
+      icon: <FaFacebook size={16} />,
+      href: "https://www.facebook.com/share/1JBR3oQvvW/",
       label: "Facebook",
       color: "#1877f2",
+    },
+    {
+      icon: <FaTiktok size={16} />,
+      href: "https://vt.tiktok.com/ZSCP5Pjv1/",
+      label: "TikTok",
+      color: "#000000",
     },
   ];
 
@@ -485,6 +492,7 @@ export default function ContactPage() {
                   gridTemplateColumns: "1fr 1fr",
                   gap: 12,
                 }}
+                className="socials-grid"
               >
                 {socials.map(({ icon, href, label, color }) => (
                   <a
@@ -1357,6 +1365,9 @@ export default function ContactPage() {
         @media (max-width: 540px) {
           .form-row { grid-template-columns: 1fr !important; }
         }
+          @media (min-width: 400px) {
+  .socials-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+}
       `}</style>
     </div>
   );

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
-import { FaLinkedinIn, FaInstagram, FaXTwitter } from "react-icons/fa6";
+import {
+  FaLinkedinIn,
+  FaInstagram,
+  FaXTwitter,
+  FaTiktok,
+  FaFacebook,
+} from "react-icons/fa6";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -52,18 +58,28 @@ export default function Footer() {
               {[
                 {
                   icon: <FaLinkedinIn size={18} />,
-                  href: "https://linkedin.com",
+                  href: "https://www.linkedin.com/company/bijon-marketing-agency/",
                   label: "LinkedIn",
                 },
                 {
                   icon: <FaInstagram size={18} />,
-                  href: "https://instagram.com",
+                  href: "https://www.instagram.com/bijon_marketing/",
                   label: "Instagram",
                 },
                 {
                   icon: <FaXTwitter size={18} />,
-                  href: "https://x.com",
+                  href: "https://x.com/Bijonmarketing?s=20",
                   label: "Twitter",
+                },
+                {
+                  icon: <FaFacebook size={18} />,
+                  href: "https://www.facebook.com/share/1JBR3oQvvW/",
+                  label: "Facebook",
+                },
+                {
+                  icon: <FaTiktok size={18} />,
+                  href: "https://vt.tiktok.com/ZSCP5Pjv1/",
+                  label: "TikTok",
                 },
               ].map(({ icon, href, label }) => (
                 <a
