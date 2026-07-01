@@ -13,6 +13,7 @@ const partners = [
   { name: "Jewels Promotions", logo: "/partners/jewels.jpeg" },
   { name: "Maji Moto Maasai Camp", logo: "/partners/maji-moto.jpeg" },
   { name: "Cigna Healthcare", logo: "/partners/cigna.jpeg" },
+  { name: "Unido", logo: "/partners/unido.jpeg" },
 ];
 
 export default function Partners() {
