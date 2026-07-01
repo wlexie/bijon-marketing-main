@@ -2,55 +2,17 @@
 import { useEffect, useRef } from "react";
 
 const partners = [
+  { name: "Medivic Medical Supplies", logo: "/partners/medivic.jpeg" },
   {
-    name: "Safaricom",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Safaricom_Logo.svg/2560px-Safaricom_Logo.svg.png",
+    name: "Conservation Alliance Kenya",
+    logo: "/partners/conservation-alliance.jpeg",
   },
-  {
-    name: "Equity Bank",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Equity_Bank_Kenya_logo.svg/2560px-Equity_Bank_Kenya_logo.svg.png",
-  },
-  {
-    name: "KCB Group",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/KCB_Group_logo.svg/2560px-KCB_Group_logo.svg.png",
-  },
-  {
-    name: "Nation Media",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Nation_Media_Group_logo.svg/2560px-Nation_Media_Group_logo.svg.png",
-  },
-  {
-    name: "Kenya Airways",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kenya_Airways_logo.svg/2560px-Kenya_Airways_logo.svg.png",
-  },
-  {
-    name: "Jubilee Insurance",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Jubilee_Insurance_logo.svg/2560px-Jubilee_Insurance_logo.svg.png",
-  },
-  {
-    name: "Java House",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Java_House_logo.svg/2560px-Java_House_logo.svg.png",
-  },
-  {
-    name: "Britam",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Britam_logo.svg/2560px-Britam_logo.svg.png",
-  },
-];
-
-const partnerNames = [
-  "Safaricom",
-  "Equity Bank",
-  "KCB Group",
-  "Nation Media Group",
-  "Kenya Airways",
-  "Jubilee Insurance",
-  "Java House",
-  "Britam Holdings",
-  "Naivas Supermarkets",
-  "Total Energies",
-  "Diageo Kenya",
-  "Unilever Kenya",
-  "Sarova Hotels",
-  "Bamburi Cement",
+  { name: "Impala Saracens", logo: "/partners/impala-saracens.jpeg" },
+  { name: "Kenya Harlequin FC", logo: "/partners/harlequin.jpeg" },
+  { name: "Kenya Rugby Union", logo: "/partners/kenya-rugby.jpeg" },
+  { name: "Jewels Promotions", logo: "/partners/jewels.jpeg" },
+  { name: "Maji Moto Maasai Camp", logo: "/partners/maji-moto.jpeg" },
+  { name: "Cigna Healthcare", logo: "/partners/cigna.jpeg" },
 ];
 
 export default function Partners() {
@@ -73,7 +35,7 @@ export default function Partners() {
     return () => observer.disconnect();
   }, []);
 
-  const doubled = [...partnerNames, ...partnerNames];
+  const doubled = [...partners, ...partners];
 
   return (
     <section
@@ -209,35 +171,34 @@ export default function Partners() {
         {/* Row 1 — left to right */}
         <div style={{ overflow: "hidden", marginBottom: 16 }}>
           <div className="marquee" style={{ gap: 16 }}>
-            {doubled.map((name, i) => (
+            {doubled.map((partner, i) => (
               <div
                 key={i}
+                className="partner-card"
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "16px 32px",
-                  backgroundColor: "var(--card)",
-                  borderRadius: 12,
-                  border: "1px solid var(--border)",
-                  whiteSpace: "nowrap",
+                  padding: "0 40px",
                   flexShrink: 0,
-                  minWidth: 180,
+                  height: 80,
                   transition: "all 0.3s ease",
                   cursor: "default",
                 }}
-                className="partner-card"
               >
-                <span
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
                   style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "var(--text)",
-                    letterSpacing: "0.3px",
+                    maxHeight: 60,
+                    maxWidth: 140,
+                    width: "auto",
+                    height: "auto",
+                    objectFit: "contain",
+                    filter: "var(--partner-filter)",
+                    transition: "filter 0.3s ease, transform 0.3s ease",
                   }}
-                >
-                  {name}
-                </span>
+                />
               </div>
             ))}
           </div>
@@ -253,34 +214,34 @@ export default function Partners() {
               animationDuration: "50s",
             }}
           >
-            {[...doubled].reverse().map((name, i) => (
+            {[...doubled].reverse().map((partner, i) => (
               <div
                 key={i}
+                className="partner-card"
                 style={{
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  padding: "16px 32px",
-                  backgroundColor: "var(--bg-section)",
-                  borderRadius: 12,
-                  border: "1px solid var(--border)",
-                  whiteSpace: "nowrap",
+                  padding: "0 40px",
                   flexShrink: 0,
-                  minWidth: 180,
+                  height: 80,
+                  transition: "all 0.3s ease",
                   cursor: "default",
                 }}
-                className="partner-card"
               >
-                <span
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
                   style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "var(--muted)",
-                    letterSpacing: "0.3px",
+                    maxHeight: 60,
+                    maxWidth: 140,
+                    width: "auto",
+                    height: "auto",
+                    objectFit: "contain",
+                    filter: "var(--partner-filter)",
+                    transition: "filter 0.3s ease, transform 0.3s ease",
                   }}
-                >
-                  {name}
-                </span>
+                />
               </div>
             ))}
           </div>
@@ -353,24 +314,24 @@ export default function Partners() {
       </div>
 
       <style>{`
-        .partner-card:hover {
-          border-color: var(--primary) !important;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px -4px rgba(0,74,198,0.1);
-        }
-        @media (max-width: 768px) {
-          .partners-stats {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 24px !important;
-            padding: 24px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .partners-stats {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-      `}</style>
+  :root {
+    --partner-filter: grayscale(40%) opacity(0.75);
+  }
+  .dark {
+    --partner-filter: grayscale(30%) opacity(0.6) brightness(1.3);
+  }
+  .partner-card:hover img {
+    filter: none !important;
+    transform: scale(1.08);
+  }
+  @media (max-width: 768px) {
+    .partners-stats {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 24px !important;
+      padding: 24px !important;
+    }
+  }
+`}</style>
     </section>
   );
 }
