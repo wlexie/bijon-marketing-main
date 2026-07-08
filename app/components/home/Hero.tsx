@@ -176,7 +176,7 @@ export default function Hero() {
             }}
           >
             {/* Tag pill */}
-            <div
+            {/* <div
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -220,7 +220,7 @@ export default function Hero() {
               >
                 {slide.tag}
               </span>
-            </div>
+            </div> */}
 
             {/* Headline */}
             <h1
