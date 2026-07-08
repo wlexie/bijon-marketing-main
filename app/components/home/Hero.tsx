@@ -24,8 +24,7 @@ const slides = [
     headline: "Don't Just Launch. Create an Experience.",
     description:
       "We bridge the gap between digital and physical, designing immersive, real-world brand activations that your audience will feel, remember, and share.",
-    image:
-      "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    image: "/hero-content/experiential.jpeg",
   },
   {
     tag: "Digital Marketing",
