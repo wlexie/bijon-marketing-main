@@ -13,37 +13,52 @@ import {
 
 const slides = [
   {
-    tag: "Kenya's Full-Service Marketing Agency",
-    headline: "We don't just market. We author your success.",
+    tag: "Content Creation",
+    headline: "Stories That Stick. Content That Converts.",
     description:
-      "Bijon Marketing blends executive-level strategy with editorial precision to transform high-growth brands into industry leaders.",
-    image:
-      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "We craft compelling, high-quality narratives and visuals that capture attention, spark engagement, and turn casual scrollers into loyal customers.",
+    image: "/hero-content/slide1.jpeg",
   },
   {
-    tag: "Digital Marketing Excellence",
-    headline: "Comprehensive strategies that drive real results.",
+    tag: "Experiential Marketing",
+    headline: "Don't Just Launch. Create an Experience.",
     description:
-      "From SEO to paid media and social channels, we manage your entire digital ecosystem with surgical precision.",
+      "We bridge the gap between digital and physical, designing immersive, real-world brand activations that your audience will feel, remember, and share.",
+    image:
+      "https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    tag: "Digital Marketing",
+    headline: "Precision Targeting. Measurable Growth.",
+    description:
+      "Stop guessing where your customers are. Our data-driven digital strategies put your brand right in front of the right audience at the perfect moment.",
     image:
       "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
   {
-    tag: "Experiential Marketing",
-    headline: "Immersive activations that create lasting connections.",
+    tag: "Branding & Identity",
+    headline: "Unmistakable Identity. Unforgettable Brands.",
     description:
-      "We create memorable brand experiences that foster emotional connections and direct consumer engagement across Kenya.",
+      "Go beyond a logo. We build cohesive, powerful brand identities, positioning, and design languages that command authority in your market.",
     image:
-      "https://images.pexels.com/photos/5699456/pexels-photo-5699456.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg?auto=compress&cs=tinysrgb&w=1600",
+  },
+  {
+    tag: "Media Planning & Buying",
+    headline: "Maximize Your Reach. Optimize Your Spend.",
+    description:
+      "Get the ultimate return on your ad spend. We strategically plan, negotiate, and place your campaigns across top-tier media channels for maximum impact.",
+    image:
+      "https://images.pexels.com/photos/3182781/pexels-photo-3182781.jpeg?auto=compress&cs=tinysrgb&w=1600",
   },
 ];
 
-const stats = [
-  { icon: <Users size={16} />, value: "120+", label: "Clients" },
-  { icon: <TrendingUp size={16} />, value: "300%", label: "Avg. ROI" },
-  { icon: <Award size={16} />, value: "4+", label: "Yrs Active" },
-  { icon: <Zap size={16} />, value: "50+", label: "Campaigns" },
-];
+// const stats = [
+//   { icon: <Users size={16} />, value: "120+", label: "Clients" },
+//   { icon: <TrendingUp size={16} />, value: "300%", label: "Avg. ROI" },
+//   { icon: <Award size={16} />, value: "4+", label: "Yrs Active" },
+//   { icon: <Zap size={16} />, value: "50+", label: "Campaigns" },
+// ];
 
 const SLIDE_DURATION = 8000;
 const TEXT_FADE_DURATION = 700;
@@ -286,7 +301,7 @@ export default function Hero() {
           </div>
 
           {/* Stats row */}
-          <div
+          {/* <div
             style={{
               display: "flex",
               gap: 24,
@@ -339,7 +354,7 @@ export default function Hero() {
                 </div>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -393,7 +408,7 @@ export default function Hero() {
         <ChevronRight size={22} />
       </button>
 
-      {/* Slide counter */}
+      {/* Slide title indicator */}
       <div
         style={{
           position: "absolute",
@@ -401,19 +416,34 @@ export default function Hero() {
           right: 32,
           display: "flex",
           alignItems: "center",
-          gap: 6,
+          gap: 10,
           backgroundColor: "rgba(0,0,0,0.4)",
           backdropFilter: "blur(8px)",
-          padding: "8px 14px",
+          padding: "8px 18px",
           borderRadius: 100,
           border: "1px solid rgba(255,255,255,0.15)",
         }}
       >
-        <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: 700,
+            color: "var(--accent)",
+            letterSpacing: "0.5px",
+          }}
+        >
           {String(active + 1).padStart(2, "0")}
         </span>
-        <span style={{ fontSize: 13, color: "rgba(255,255,255,0.4)" }}>
-          / {String(slides.length).padStart(2, "0")}
+        <span style={{ fontSize: 12, color: "rgba(255,255,255,0.3)" }}>—</span>
+        <span
+          style={{
+            fontSize: 12,
+            fontWeight: 500,
+            color: "rgba(255,255,255,0.8)",
+            letterSpacing: "0.3px",
+          }}
+        >
+          {slides[active].tag}
         </span>
       </div>
 
