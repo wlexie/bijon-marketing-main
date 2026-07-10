@@ -3,26 +3,26 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight, Users, Calendar, TrendingUp } from "lucide-react";
 
-const stats = [
-  {
-    icon: <Users size={20} />,
-    value: "120+",
-    label: "Global Clients",
-    color: "var(--primary)",
-  },
-  {
-    icon: <Calendar size={20} />,
-    value: "4+",
-    label: "Years in Kenya",
-    color: "var(--accent)",
-  },
-  {
-    icon: <TrendingUp size={20} />,
-    value: "300%",
-    label: "Avg. ROI Growth",
-    color: "var(--primary)",
-  },
-];
+// const stats = [
+//   {
+//     icon: <Users size={20} />,
+//     value: "120+",
+//     label: "Global Clients",
+//     color: "var(--primary)",
+//   },
+//   {
+//     icon: <Calendar size={20} />,
+//     value: "4+",
+//     label: "Years in Kenya",
+//     color: "var(--accent)",
+//   },
+//   {
+//     icon: <TrendingUp size={20} />,
+//     value: "300%",
+//     label: "Avg. ROI Growth",
+//     color: "var(--primary)",
+//   },
+// ];
 
 export default function OurStory() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -291,7 +291,7 @@ export default function OurStory() {
             </p>
 
             {/* Stats row */}
-            <div
+            {/* <div
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
@@ -351,7 +351,7 @@ export default function OurStory() {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             <div style={{ paddingTop: 8 }}>
               <Link
