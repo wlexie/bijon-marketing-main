@@ -657,7 +657,7 @@ export default function AboutPage() {
                 />
               </div>
               {/* Floating card */}
-              <div
+              {/* <div
                 style={{
                   position: "absolute",
                   bottom: 32,
@@ -688,7 +688,7 @@ export default function AboutPage() {
                 >
                   Happy Clients
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
