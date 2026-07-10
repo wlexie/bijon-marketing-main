@@ -250,7 +250,7 @@ export default function Partners() {
       </div>
 
       {/* Bottom stats bar */}
-      <div
+      {/* <div
         className="reveal"
         style={{
           maxWidth: 1280,
@@ -312,7 +312,7 @@ export default function Partners() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       <style>{`
   :root {

@@ -48,32 +48,32 @@ const values = [
   },
 ];
 
-const stats = [
-  {
-    icon: <Users size={20} />,
-    value: "120+",
-    label: "Clients Served",
-    color: "var(--primary)",
-  },
-  {
-    icon: <TrendingUp size={20} />,
-    value: "300%",
-    label: "Avg. ROI Growth",
-    color: "var(--accent)",
-  },
-  {
-    icon: <Award size={20} />,
-    value: "4+",
-    label: "Years of Excellence",
-    color: "var(--primary)",
-  },
-  {
-    icon: <Globe size={20} />,
-    value: "50+",
-    label: "Campaigns Delivered",
-    color: "var(--accent)",
-  },
-];
+// const stats = [
+//   {
+//     icon: <Users size={20} />,
+//     value: "120+",
+//     label: "Clients Served",
+//     color: "var(--primary)",
+//   },
+//   {
+//     icon: <TrendingUp size={20} />,
+//     value: "300%",
+//     label: "Avg. ROI Growth",
+//     color: "var(--accent)",
+//   },
+//   {
+//     icon: <Award size={20} />,
+//     value: "4+",
+//     label: "Years of Excellence",
+//     color: "var(--primary)",
+//   },
+//   {
+//     icon: <Globe size={20} />,
+//     value: "50+",
+//     label: "Campaigns Delivered",
+//     color: "var(--accent)",
+//   },
+// ];
 
 const team = [
   {
@@ -320,7 +320,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats bar */}
-      <section
+      {/* <section
         className="about-section"
         style={{
           backgroundColor: "var(--bg-section)",
@@ -389,7 +389,7 @@ export default function AboutPage() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Mission & Vision */}
       <section
@@ -884,74 +884,57 @@ export default function AboutPage() {
                 margin: 0,
               }}
             >
-              Meet Our Team
+              Our Operational Framework
             </h2>
           </div>
 
           <div
+            className="reveal"
             style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 24,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-            className="team-grid"
           >
-            {team.map((member, index) => (
-              <div
-                key={member.name}
-                className={`reveal hover-lift d${index + 1}`}
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "1100px",
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+                borderRadius: "24px",
+                padding: "32px",
+                boxShadow: "0 10px 40px rgba(0,0,0,0.06)",
+              }}
+            >
+              <img
+                src="/team.png"
+                alt="Company Organizational Structure"
                 style={{
-                  backgroundColor: "var(--card)",
-                  borderRadius: 20,
-                  overflow: "hidden",
-                  border: "1px solid var(--border)",
+                  width: "100%",
+                  height: "auto",
+                  display: "block",
+                }}
+              />
+
+              <p
+                style={{
+                  marginTop: "24px",
+                  textAlign: "center",
+                  color: "var(--muted)",
+                  fontSize: "15px",
+                  lineHeight: 1.8,
+                  maxWidth: "850px",
+                  marginInline: "auto",
                 }}
               >
-                <div
-                  style={{
-                    aspectRatio: "1/1",
-                    overflow: "hidden",
-                  }}
-                >
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      transition: "transform 0.4s ease",
-                    }}
-                    className="team-img"
-                  />
-                </div>
-                <div
-                  style={{
-                    padding: "20px 24px",
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: 17,
-                      fontWeight: 700,
-                      color: "var(--dark)",
-                      marginBottom: 4,
-                    }}
-                  >
-                    {member.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: 13,
-                      color: "var(--muted)",
-                      margin: 0,
-                    }}
-                  >
-                    {member.role}
-                  </p>
-                </div>
-              </div>
-            ))}
+                Our multidisciplinary team combines strategy, creativity,
+                technology, and analytics to deliver impactful marketing and
+                digital solutions. Every department works together to ensure
+                every project is executed with excellence from concept to
+                completion.
+              </p>
+            </div>
           </div>
         </div>
       </section>
