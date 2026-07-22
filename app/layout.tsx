@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import ScrollReveal from "@/app/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Bijon Marketing | Kenya's Full-Service Marketing Agency",
@@ -26,12 +27,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap"
           rel="stylesheet"
         />
       </head>
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ScrollReveal />
           <Navbar />
           <main>{children}</main>
           <Footer />
